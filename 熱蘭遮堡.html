@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>景點詳情</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d0d8db;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    /* 返回按鈕及標題區塊，保持固定在頁面頂部 */
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: #4a4a4a;
+      color: white;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .back-button {
+      background-color: #595959;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    /* 輪播區域 */
+    .carousel {
+      position: relative;
+      width: 60%;
+      margin: 100px auto 20px; /* 確保內容不與固定的標題重疊 */
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover; /* 防止圖片變形或模糊 */
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    /* 調整左側箭頭與圖片邊緣的距離 */
+    .prev {
+    left: 1px; /* 將這個值調整為你想要的距離 */
+    }
+
+    /* 調整右側箭頭與圖片邊緣的距離 */
+    .next {
+    right: 1px; /* 將這個值調整為你想要的距離 */
+    border-radius: 3px 0 0 3px;
+    }
+
+
+    /* 景點介紹區 */
+    .spot-details {
+      background-color: #4a4a4a;
+      color: white;
+      padding: 20px;
+      width: 60%;
+      margin: 20px auto;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .spot-details p {
+      margin: 10px 0;
+    }
+
+    .spot-details a {
+      color: #66b2ff;
+      text-decoration: none;
+    }
+
+    .spot-details a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 返回按鈕 -->
+  <div class="header">
+    <button class="back-button" onclick="window.history.back()">返回</button>
+  </div>
+
+  <!-- 圖片輪播區 -->
+  <div class="carousel">
+    <img src="https://imageshack.com/i/poJ9ljZpj" alt="景點圖片1" class="active">
+    <img src="https://imageshack.com/i/pn4m0KgTj" alt="景點圖片2">
+    <img src="./熱蘭遮堡3.webp" alt="景點圖片3">
+
+    <!-- 左右導航箭頭 -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+
+  <!-- 景點介紹文字區 -->
+  <div class="spot-details">
+    <h2>熱蘭遮堡</h2>
+    <p>安平古堡，原稱奧蘭治城（荷蘭語：Fort Oranje）、熱蘭遮堡或熱蘭遮城（臺灣話：Jiat-lan-jia siâⁿ，譯自荷蘭語 Fort Zeelandia），又名臺灣城、安平鎮城、安平城、王城（臺灣話：Ông siâⁿ）、紅毛城、赤嵌城，是一座位於臺灣臺南市安平區的一個城郭遺址。於1623年10月由荷蘭東印度公司興建簡易城砦，1624年4月底拆毀，8月底原址重建堡壘，至1634年竣工，是臺灣最早的要塞建築。自建城以來，曾是荷蘭及明鄭統治臺灣的中樞，
+
+        目前安平古堡共有兩處遺跡被指定爲中華民國內政部所頒訂的兩個國定古蹟：公告於1983年12月28日的「台灣城殘蹟（安平古堡殘蹟）」及公告於2004年10月7日的「熱蘭遮城城垣暨城內建築遺構」，兩處遺跡實際上源自同一座建築，被視為台灣現存最古老的建築之一。全園區由臺南市政府文化局古蹟營運科負責營運，內有安平古堡史蹟紀念館及熱蘭遮城博物館，以及1975年由日治時期瞭望塔修建而成的瞭望臺。2022年10月，中華民國文化部文化資產局古蹟審議委員會，決定將上述安平古堡內兩處國定古蹟合併為一處，並更名為熱蘭遮堡遺構。
+        
+        此外，該城郭遺址於黃昏時與落日互相煇映之景「安平夕照」。在1953年曾獲臺灣省政府選為臺灣八景之一。</p>
+    <p>Google Map: <a href="https://maps.app.goo.gl/SLXLLnT1xYSAJ9NK6" target="_blank">查看地圖</a></p>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    showSlides(slideIndex);
+
+    // 下一張/上一張圖片
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // 顯示圖片
+    function showSlides(n) {
+      let i;
+      let slides = document.querySelectorAll(".carousel img");
+      if (n >= slides.length) {slideIndex = 0}
+      if (n < 0) {slideIndex = slides.length - 1}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex].style.display = "block";
+    }
+
+    // 自動輪播功能 (如果需要自動播放圖片，可以啟用此功能)
+    // setInterval(() => { plusSlides(1); }, 5000);
+  </script>
+
+</body>
+</html>

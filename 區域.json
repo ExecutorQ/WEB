@@ -1,0 +1,113 @@
+{
+    "regions": [
+      {
+        "name": "北部",
+        "mainContent": {
+          "map": {
+            "src": "./北部-Photoroom.png"
+          },
+          "buttons": [
+            {
+              "label": "台北",
+              "action": "./台北.html"
+            },
+            {
+              "label": "新北",
+              "action": "./新北.html"
+            },
+            {
+              "label": "基隆",
+              "action": "./基隆.html"
+            },
+            {
+              "label": "桃園",
+              "action": "./桃園.html"
+            },
+            {
+              "label": "新竹",
+              "action": "./新竹.html"
+            },
+            {
+              "label": "宜蘭",
+              "action": "./宜蘭.html"
+            }
+          ]
+        }
+      },
+      {
+        "name": "中部",
+        "mainContent": {
+          "map": {
+            "src": "./中部-Photoroom.png"
+          },
+          "buttons": [
+            {
+              "label": "苗栗",
+              "action": "./苗栗.html"
+            },
+            {
+              "label": "台中",
+              "action": "./台中.html"
+            },
+            {
+              "label": "彰化",
+              "action": "./彰化.html"
+            },
+            {
+              "label": "雲林",
+              "action": "./雲林.html"
+            },
+            {
+              "label": "南投",
+              "action": "./南投.html"
+            }
+          ]
+        }
+      },
+      {
+        "name": "南部",
+        "mainContent": {
+          "map": {
+            "src": "./南部-Photoroom.png"
+          },
+          "buttons": [
+            {
+              "label": "嘉義",
+              "action": "./嘉義.html"
+            },
+            {
+              "label": "台南",
+              "action": "./台南.html"
+            },
+            {
+              "label": "高雄",
+              "action": "./高雄.html"
+            },
+            {
+              "label": "屏東",
+              "action": "./屏東.html"
+            }
+          ]
+        }
+      },
+      {
+        "name": "東部",
+        "mainContent": {
+          "map": {
+            "src": "./東部-Photoroom.png"
+          },
+          "buttons": [
+            {
+              "label": "花蓮",
+              "action": "./花蓮.html"
+            },
+            {
+              "label": "台東",
+              "action": "./台東.html"
+            }
+          ]
+        }
+      }
+    ]
+  }
+  

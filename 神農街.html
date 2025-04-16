@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>景點詳情</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d0d8db;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    /* 返回按鈕及標題區塊，保持固定在頁面頂部 */
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: #4a4a4a;
+      color: white;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .back-button {
+      background-color: #595959;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    /* 輪播區域 */
+    .carousel {
+      position: relative;
+      width: 60%;
+      margin: 100px auto 20px; /* 確保內容不與固定的標題重疊 */
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover; /* 防止圖片變形或模糊 */
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    /* 調整左側箭頭與圖片邊緣的距離 */
+    .prev {
+    left: 1px; /* 將這個值調整為你想要的距離 */
+    }
+
+    /* 調整右側箭頭與圖片邊緣的距離 */
+    .next {
+    right: 1px; /* 將這個值調整為你想要的距離 */
+    border-radius: 3px 0 0 3px;
+    }
+
+
+    /* 景點介紹區 */
+    .spot-details {
+      background-color: #4a4a4a;
+      color: white;
+      padding: 20px;
+      width: 60%;
+      margin: 20px auto;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .spot-details p {
+      margin: 10px 0;
+    }
+
+    .spot-details a {
+      color: #66b2ff;
+      text-decoration: none;
+    }
+
+    .spot-details a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 返回按鈕 -->
+  <div class="header">
+    <button class="back-button" onclick="window.history.back()">返回</button>
+  </div>
+
+  <!-- 圖片輪播區 -->
+  <div class="carousel">
+    <img src="https://imageshack.com/i/poK2M838j" alt="景點圖片1" class="active">
+    <img src="https://imageshack.com/i/pmSf2exPj" alt="景點圖片2">
+    <img src="https://imageshack.com/i/pmyA1wwFj" alt="景點圖片3">
+
+    <!-- 左右導航箭頭 -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+
+  <!-- 景點介紹文字區 -->
+  <div class="spot-details">
+    <h2>神農街</h2>
+    <p>神農街舊稱北勢街，是臺灣府城街道之一。神農街昔因座落於五條港中央、南勢港北側，遂被稱為北勢街，今日神農街之名，則得名於路尾的藥王廟，神農街上密佈古蹟、廟宇、老行業，自成一格的古味盎然，吸引遊客來訪。
+
+        17世紀中期，台江內海（西門路以西）盡是一片汪洋，直到清朝年間，台江內海日漸淤塞，逐漸形成安海港、南河港、北勢港、佛頭港及新港墘港等五條港，清初，成為臺灣對外連結的門戶。
+        
+        由於港岸是郊商貿易的主要碼頭，自然吸引大量大陸移民前來，在碼頭從事苦力，且為了鞏固地盤，這群人便在當地逐漸結合成以姓氏、祖籍為中心的團體，先後發展出北郊蘇萬利（專營廈門以北港口貿易，專賣藥材、絲綢、南北貨）、南郊金永順（專營廈門以南貿易，專門賣煙絲、陶瓷、磚瓦）、糖郊李勝興（主要從事糖、米、豆、麻的出口與運轉），稱為三郊。</p>
+    <p>Google Map: <a href="https://maps.app.goo.gl/NEeiSNmtbin3JHyJ6" target="_blank">查看地圖</a></p>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    showSlides(slideIndex);
+
+    // 下一張/上一張圖片
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // 顯示圖片
+    function showSlides(n) {
+      let i;
+      let slides = document.querySelectorAll(".carousel img");
+      if (n >= slides.length) {slideIndex = 0}
+      if (n < 0) {slideIndex = slides.length - 1}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex].style.display = "block";
+    }
+
+    // 自動輪播功能 (如果需要自動播放圖片，可以啟用此功能)
+    // setInterval(() => { plusSlides(1); }, 5000);
+  </script>
+
+</body>
+</html>

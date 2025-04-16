@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>景點詳情</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d0d8db;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    /* 返回按鈕及標題區塊，保持固定在頁面頂部 */
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: #4a4a4a;
+      color: white;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .back-button {
+      background-color: #595959;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    /* 輪播區域 */
+    .carousel {
+      position: relative;
+      width: 60%;
+      margin: 100px auto 20px; /* 確保內容不與固定的標題重疊 */
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover; /* 防止圖片變形或模糊 */
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    /* 調整左側箭頭與圖片邊緣的距離 */
+    .prev {
+    left: 1px; /* 將這個值調整為你想要的距離 */
+    }
+
+    /* 調整右側箭頭與圖片邊緣的距離 */
+    .next {
+    right: 1px; /* 將這個值調整為你想要的距離 */
+    border-radius: 3px 0 0 3px;
+    }
+
+
+    /* 景點介紹區 */
+    .spot-details {
+      background-color: #4a4a4a;
+      color: white;
+      padding: 20px;
+      width: 60%;
+      margin: 20px auto;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .spot-details p {
+      margin: 10px 0;
+    }
+
+    .spot-details a {
+      color: #66b2ff;
+      text-decoration: none;
+    }
+
+    .spot-details a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 返回按鈕 -->
+  <div class="header">
+    <button class="back-button" onclick="window.history.back()">返回</button>
+  </div>
+
+  <!-- 圖片輪播區 -->
+  <div class="carousel">
+    <img src="https://imageshack.com/i/pmpbuHnxj" alt="景點圖片1" class="active">
+    <img src="https://imageshack.com/i/pnffRXWrj" alt="景點圖片2">
+    <img src="https://imageshack.com/i/poAR3oJij" alt="景點圖片3">
+
+    <!-- 左右導航箭頭 -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+
+  <!-- 景點介紹文字區 -->
+  <div class="spot-details">
+    <h2>瑞豐夜市</h2>
+    <p>瑞豐夜市，位於臺灣高雄市左營區裕誠路、南屏路及東門路一帶。隔著南屏路與三民家商相望，並緊鄰著高雄巨蛋商圈，該處亦為北高雄繁榮之地。瑞豐夜市於週二、週四、週五、週六及週日營業，每逢週一及週三休市。</p>
+    <p>Google Map: <a href="https://maps.app.goo.gl/L3trqnDjASja9Wk87" target="_blank">查看地圖</a></p>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    showSlides(slideIndex);
+
+    // 下一張/上一張圖片
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // 顯示圖片
+    function showSlides(n) {
+      let i;
+      let slides = document.querySelectorAll(".carousel img");
+      if (n >= slides.length) {slideIndex = 0}
+      if (n < 0) {slideIndex = slides.length - 1}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex].style.display = "block";
+    }
+
+    // 自動輪播功能 (如果需要自動播放圖片，可以啟用此功能)
+    // setInterval(() => { plusSlides(1); }, 5000);
+  </script>
+
+</body>
+</html>
