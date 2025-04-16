@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台灣本島旅遊推薦</title>
+  <style>
+    body {
+      background-color: #f0f8ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 300px; /* 電腦版固定寬度 */
+    }
+    .title {
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      padding: 20px 70px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      white-space: nowrap;
+      text-align: center;
+    }
+    .back {
+      background-color: black;
+      padding: 40px;
+      border-radius: 20px;
+    }
+    .content {
+      color: white;
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 16px;
+    }
+    .button:hover {
+      background-color: #7B7B7B;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+    }
+    .about-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .about-button:hover {
+      background-color: #7B7B7B;
+    }
+    @media (max-width: 768px) {
+      /* 平板及手機上的樣式調整 */
+      .container {
+        width: 100%; /* 手機/平板版佈局自適應寬度 */
+        max-width: 500px;
+      }
+      .title {
+        font-size: 20px;
+        padding: 15px 30px;
+      }
+      .content {
+        font-size: 14px;
+      }
+      .back {
+        padding: 20px;
+      }
+    }
+    @media (max-width: 480px) {
+      /* 手機上的樣式調整 */
+      .title {
+        font-size: 18px;
+        padding: 10px 20px;
+      }
+      .content {
+        font-size: 14px;
+      }
+      .button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+      .about-button {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 關於按鈕 -->
+  <button class="about-button" onclick="redirectToAbout()">關於</button>
+  <div class="container">
+    <div class="title">台灣本島旅遊推薦</div>
+    <div class="back">
+      <div class="content">
+        本網站將提供台灣本島各地的旅遊景點，供常常旅遊的人們參考
+      </div>
+      <div class="button-container">
+        <button class="button" onclick="redirect()">前往網站→</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    function redirect() {
+      window.location.href = './台灣區域.html';
+    }
+    function redirectToAbout() {
+      window.location.href = 'https://www1.pu.edu.tw/~s1125256/hw4/'; // 修改為實際的「關於」頁面路徑
+    }
+  </script>
+</body>
+</html>

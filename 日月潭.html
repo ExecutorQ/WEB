@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>景點詳情</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d0d8db;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    /* 返回按鈕及標題區塊，保持固定在頁面頂部 */
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: #4a4a4a;
+      color: white;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .back-button {
+      background-color: #595959;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    /* 輪播區域 */
+    .carousel {
+      position: relative;
+      width: 60%;
+      margin: 100px auto 20px; /* 確保內容不與固定的標題重疊 */
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover; /* 防止圖片變形或模糊 */
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    /* 調整左側箭頭與圖片邊緣的距離 */
+    .prev {
+    left: 1px; /* 將這個值調整為你想要的距離 */
+    }
+
+    /* 調整右側箭頭與圖片邊緣的距離 */
+    .next {
+    right: 1px; /* 將這個值調整為你想要的距離 */
+    border-radius: 3px 0 0 3px;
+    }
+
+
+    /* 景點介紹區 */
+    .spot-details {
+      background-color: #4a4a4a;
+      color: white;
+      padding: 20px;
+      width: 60%;
+      margin: 20px auto;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .spot-details p {
+      margin: 10px 0;
+    }
+
+    .spot-details a {
+      color: #66b2ff;
+      text-decoration: none;
+    }
+
+    .spot-details a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 返回按鈕 -->
+  <div class="header">
+    <button class="back-button" onclick="window.history.back()">返回</button>
+  </div>
+
+  <!-- 圖片輪播區 -->
+  <div class="carousel">
+    <img src="https://imageshack.com/i/pnG13tSBj" alt="景點圖片1" class="active">
+    <img src="https://imageshack.com/i/pnX4efDwj" alt="景點圖片2">
+    <img src="./日月潭3.webp" alt="景點圖片3">
+
+    <!-- 左右導航箭頭 -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+
+  <!-- 景點介紹文字區 -->
+  <div class="spot-details">
+    <h2>日月潭</h2>
+    <p>日月潭（邵語：Zintun或Zintun a Wazaqan），是一個位在臺灣南投縣魚池鄉日月村的半天然淡水湖泊兼水力發電用水庫；該潭是臺灣本島面積第二大的湖泊（僅次於曾文水庫）及第一大半天然湖泊兼發電用水庫。該潭平均水面海拔約736公尺，常態面積約7.93平方公里（滿水位時約8.4平方公里），最高水深達27公尺。其蘊含自然生態豐富，但其中有非常多是外來種生物。
+
+        該潭是台灣平埔族的邵族所生活的主要地區之一，屬於邵族傳統領域；生活在該潭四周的族人稱其為「水社海」。由於過去當地附近平埔族稱居住於山裡的高山族，為「沙連」，當地又是山區最大的積水盆地，日月潭及其周圍地區因而得名「水沙連」。此外，尚有「水社大湖」、「龍湖」、「珠潭」、「雙潭」等名稱。其今名為日潭與月潭之合稱，該二名分別來自對其兩大組成部份水色及輪廓的描繪。同時，該潭景色自古以來經常受人讚賞，並自日本統治時期以來多次被有關當局列入臺灣八景。</p>
+    <p>Google Map: <a href="https://maps.app.goo.gl/C2eUanbgfBhXkk1CA" target="_blank">查看地圖</a></p>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    showSlides(slideIndex);
+
+    // 下一張/上一張圖片
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // 顯示圖片
+    function showSlides(n) {
+      let i;
+      let slides = document.querySelectorAll(".carousel img");
+      if (n >= slides.length) {slideIndex = 0}
+      if (n < 0) {slideIndex = slides.length - 1}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex].style.display = "block";
+    }
+
+    // 自動輪播功能 (如果需要自動播放圖片，可以啟用此功能)
+    // setInterval(() => { plusSlides(1); }, 5000);
+  </script>
+
+</body>
+</html>

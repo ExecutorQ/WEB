@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台灣本島旅遊推薦</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #AAAAFF;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 350px;
+      height: 100px;
+      background-color: black;
+      opacity: 0.8;
+      color: white;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      position: fixed;
+      top: 0;
+      z-index: 10; /* 保證位於所有按鈕的上層 */
+      text-align: center;
+    }
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #3e8e41;
+    }
+    .container {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin: 0 auto;
+    }
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 30px;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 30px;
+    }
+    .container:hover .overlay {
+      opacity: 1;
+    }
+    /* 手機版的標題樣式 */
+    @media (max-width: 480px) {
+      .title {
+        width: 100%;
+        height: 100px;
+        border-radius: 30px;
+        position: fixed;
+        top: 20px; /* 稍微距離頂部 */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10; /* 保證位於所有按鈕的上層 */
+        text-align: center;
+        font-size: 24px;
+      }
+      .container {
+        width: 100%;
+        height: auto;
+      }
+      .title {
+        font-size: 16px;
+        height: 60px;
+      }
+      .overlay {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1 class="title">請選擇欲前往的區域</h1>
+
+<div class="container" onclick="north()">
+  <img src="./北-Photoroom.png" alt="Taiwan North Map" class="image">
+  <div class="overlay">
+    <p>北部</p>
+  </div>
+</div>
+
+<div class="container" onclick="central()">
+  <img src="./中-Photoroom.png" alt="Taiwan Central Map" class="image">
+  <div class="overlay">
+    <p>中部</p>
+  </div>
+</div>
+
+<div class="container" onclick="south()">
+  <img src="./南-Photoroom.png" alt="Taiwan South Map" class="image">
+  <div class="overlay">
+    <p>南部</p>
+  </div>
+</div>
+
+<div class="container" onclick="east()">
+  <img src="./東-Photoroom.png" alt="Taiwan East Map" class="image">
+  <div class="overlay">
+    <p>東部</p>
+  </div>
+</div>
+
+<script>
+  function north() {
+    window.location.href = './北部.html';
+  }
+
+  function central() {
+    window.location.href = './中部.html';
+  }
+
+  function south() {
+    window.location.href = './南部.html';
+  }
+
+  function east() {
+    window.location.href = './東部.html';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>景點詳情</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d0d8db;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    /* 返回按鈕及標題區塊，保持固定在頁面頂部 */
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: #4a4a4a;
+      color: white;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .back-button {
+      background-color: #595959;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    /* 輪播區域 */
+    .carousel {
+      position: relative;
+      width: 60%;
+      margin: 100px auto 20px; /* 確保內容不與固定的標題重疊 */
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover; /* 防止圖片變形或模糊 */
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    /* 調整左側箭頭與圖片邊緣的距離 */
+    .prev {
+    left: 1px; /* 將這個值調整為你想要的距離 */
+    }
+
+    /* 調整右側箭頭與圖片邊緣的距離 */
+    .next {
+    right: 1px; /* 將這個值調整為你想要的距離 */
+    border-radius: 3px 0 0 3px;
+    }
+
+
+    /* 景點介紹區 */
+    .spot-details {
+      background-color: #4a4a4a;
+      color: white;
+      padding: 20px;
+      width: 60%;
+      margin: 20px auto;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .spot-details p {
+      margin: 10px 0;
+    }
+
+    .spot-details a {
+      color: #66b2ff;
+      text-decoration: none;
+    }
+
+    .spot-details a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 返回按鈕 -->
+  <div class="header">
+    <button class="back-button" onclick="window.history.back()">返回</button>
+  </div>
+
+  <!-- 圖片輪播區 -->
+  <div class="carousel">
+    <img src="https://imageshack.com/i/pmnGU1JIj" alt="景點圖片1" class="active">
+    <img src="https://imageshack.com/i/pm5J1Unwj" alt="景點圖片2">
+    <img src="https://imageshack.com/i/po6wqbZjj" alt="景點圖片3">
+
+    <!-- 左右導航箭頭 -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+
+  <!-- 景點介紹文字區 -->
+  <div class="spot-details">
+    <h2>安平老街</h2>
+    <p>安平老街位於安平古堡東邊，為三百年前荷蘭人於台南安平地區所建的第一條街道，有「台灣街」及「石板街」的稱號，又為「開台第一街」及「延平老街」，延平街上所興建的房子多以土角厝、矮紅磚屋以及西式洋樓為主，其中洋樓的部份多以白粉牆及洗石子牆面，而欄杆、柱頭和屋簷上所裝飾的浮雕皆為手工打造，延平街在規劃時承襲清代台灣都市的規劃，僅設計約兩~三公尺的寬度，較適合行人行走及供腳踏車穿梭，並無設計讓汽車進入。
+
+        到了民國83年，由於台南市政府為順應民意而欲將延平街拓寬，但歷史文化的人士認為此為「台灣第一街」應該保存，而群起反對，於是造成工程擱置，在當地居民強烈主張拓寬以維護住戶安全並陳情市府之後，延平街還是遭到拆除整建，而到了現今，與延平街平行的中興街以及效忠街則是保存較為完整的老式街道，步行其間仍可看到不少老街的痕跡。</p>
+    <p>Google Map: <a href="https://maps.app.goo.gl/LEmwyXiYKPMpH9af7" target="_blank">查看地圖</a></p>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    showSlides(slideIndex);
+
+    // 下一張/上一張圖片
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // 顯示圖片
+    function showSlides(n) {
+      let i;
+      let slides = document.querySelectorAll(".carousel img");
+      if (n >= slides.length) {slideIndex = 0}
+      if (n < 0) {slideIndex = slides.length - 1}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex].style.display = "block";
+    }
+
+    // 自動輪播功能 (如果需要自動播放圖片，可以啟用此功能)
+    // setInterval(() => { plusSlides(1); }, 5000);
+  </script>
+
+</body>
+</html>

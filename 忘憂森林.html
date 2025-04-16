@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>景點詳情</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d0d8db;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    /* 返回按鈕及標題區塊，保持固定在頁面頂部 */
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: #4a4a4a;
+      color: white;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .back-button {
+      background-color: #595959;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    /* 輪播區域 */
+    .carousel {
+      position: relative;
+      width: 60%;
+      margin: 100px auto 20px; /* 確保內容不與固定的標題重疊 */
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover; /* 防止圖片變形或模糊 */
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    /* 調整左側箭頭與圖片邊緣的距離 */
+    .prev {
+    left: 1px; /* 將這個值調整為你想要的距離 */
+    }
+
+    /* 調整右側箭頭與圖片邊緣的距離 */
+    .next {
+    right: 1px; /* 將這個值調整為你想要的距離 */
+    border-radius: 3px 0 0 3px;
+    }
+
+
+    /* 景點介紹區 */
+    .spot-details {
+      background-color: #4a4a4a;
+      color: white;
+      padding: 20px;
+      width: 60%;
+      margin: 20px auto;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .spot-details p {
+      margin: 10px 0;
+    }
+
+    .spot-details a {
+      color: #66b2ff;
+      text-decoration: none;
+    }
+
+    .spot-details a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 返回按鈕 -->
+  <div class="header">
+    <button class="back-button" onclick="window.history.back()">返回</button>
+  </div>
+
+  <!-- 圖片輪播區 -->
+  <div class="carousel">
+    <img src="https://imageshack.com/i/poMFtV1Zj" alt="景點圖片1" class="active">
+    <img src="https://imageshack.com/i/povFwyqXj" alt="景點圖片2">
+    <img src="https://imageshack.com/i/pnfETOoCj" alt="景點圖片3">
+
+    <!-- 左右導航箭頭 -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+
+  <!-- 景點介紹文字區 -->
+  <div class="spot-details">
+    <h2>忘憂森林</h2>
+    <p>南投縣鹿谷鄉的人間仙境─南投忘憂森林，忘憂森林是位於南投鹿谷鄉鳳凰南嶺線的支線之ㄧ。由於這裡的林相特殊，終日霧氣迷濛，也有人稱為迷霧森林。登山口在溪頭往杉林溪公路，過了12生肖牌後的留龍頭。忘憂森林是位於杉林溪旁的一片原始森林，原本是一座筆直、茂密的柳杉林木森林，在921大地震後因土石坍方而造成阻塞河道後，形成一處沼澤地，而原本生長於此的柳杉木群也因長期泡水而枯死。
+
+        南投忘憂森林與水漾森林有數山之隔，都是因為地震之故而造成的景觀，只是南投忘憂森林規模沒水漾森林來得壯大，但水漾森林位在溪阿縱走的路線上，若非對地形熟悉之登山者不適合前往,就算要前往水漾森林一探究竟，得花上兩天行程翻山越嶺。而南投忘憂森林只需要從公路邊徒步約半小時即可抵達，南投忘憂森林旁邊還有一家咖啡館可以提供餐飲呢!這裡的安全性與易達性就比水漾森林親切多了。一棵棵的柳杉木筆直朝向天際，因海拔近2000公尺，景緻四時變化顯得更為迷人，不論是晴天、山嵐籠罩皆有獨特深幽、朦朧的美感，因此又被稱為「迷霧森林」，獨特的地貌與景致，更讓人稱它為台灣版的九寨溝。</p>
+    <p>Google Map: <a href="https://maps.app.goo.gl/JLC4wRAnLvJNbrvi7" target="_blank">查看地圖</a></p>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    showSlides(slideIndex);
+
+    // 下一張/上一張圖片
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // 顯示圖片
+    function showSlides(n) {
+      let i;
+      let slides = document.querySelectorAll(".carousel img");
+      if (n >= slides.length) {slideIndex = 0}
+      if (n < 0) {slideIndex = slides.length - 1}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex].style.display = "block";
+    }
+
+    // 自動輪播功能 (如果需要自動播放圖片，可以啟用此功能)
+    // setInterval(() => { plusSlides(1); }, 5000);
+  </script>
+
+</body>
+</html>

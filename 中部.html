@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台灣旅遊</title>
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* 從上方開始排列 */
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  background-color: lightblue;
+  box-sizing: border-box;
+}
+
+.header {
+  position: fixed; /* 固定位置 */
+  top: 0; /* 鎖定在頁面的最上方 */
+  left: 0;
+  width: 100%;
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px; /* 調整內邊距 */
+  box-sizing: border-box;
+  z-index: 1000; /* 確保固定在最上層 */
+}
+
+.main-content {
+  margin-top: 0px; /* 預留空間以避免內容遮住 header */
+}
+
+.button {
+  background-color: #FFA042;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #FFA042;
+}
+
+.button:active {
+  background-color: #FF8000;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.text {
+  font-size: 20px;
+  text-align: center;
+  background-color: #FF9224;
+  border-radius: 12px;
+  padding: 15px 32px;
+  color: white;
+}
+
+.map {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto -10px auto; /* 確保圖片置中並調整距離 */
+}
+
+.buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start; /* 保持按鈕靠左 */
+}
+
+.buttons-container .button {
+  flex: 1 1 calc(33.33% - 10px); /* 三個按鈕一排 */
+  box-sizing: border-box;
+}
+
+/* 手機和平板的 RWD 調整 */
+@media (max-width: 1024px) {
+  .header {
+    padding: 10px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .buttons-container .button {
+    flex: 1 1 calc(50% - 10px); /* 兩個按鈕一排 */
+  }
+
+  .text {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-top: 60px;
+  }
+
+  .buttons-container .button {
+    flex: 1 1 100%; /* 每行一個按鈕 */
+  }
+
+  .button {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .map {
+    width: 100%;
+    height: auto;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    margin-top: 50px;
+  }
+
+  .button {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .map {
+    width: 100%;
+    height: auto;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <span class="button" onclick="back()">返回</span>
+    <span class="text">請選擇您欲前往的縣市</span>
+  </div>
+
+  <div class="main-content">
+    <img src="./中部-Photoroom.png" alt="地圖" class="map">
+
+    <div class="buttons-container"> 
+      <div class="button" onclick="window.location.href='./苗栗.html'">苗栗</div>
+      <div class="button" onclick="window.location.href='./台中.html'">台中</div>
+      <div class="button" onclick="window.location.href='./彰化.html'">彰化</div>
+      <div class="button" onclick="window.location.href='./雲林.html'">雲林</div>
+      <div class="button" onclick="window.location.href='./南投.html'">南投</div>
+    </div>
+  </div>
+</div>
+<script>
+  function back() {
+    window.location.href = './台灣區域.html';
+  }
+</script>
+</body>
+</html>
